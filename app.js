@@ -60,3 +60,79 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+    // En este modulo insertamos el nuevo usuario con el Rol
+    botonAgregarUsuario.addEventListener("click", function () {
+        let valorNombreUsuario = document.getElementById("nombre").value;
+        let valorRolUsuario = document.getElementById("rol").value;
+        if (valorNombreUsuario === "" || valorRolUsuario === "") {
+            alert("Complete todos los campos");
+            return;
+        }
+        let nuevoUsuario = new Usuario(valorNombreUsuario, valorRolUsuario);
+        usuariosGuardados.push(nuevoUsuario);
+        guardarEnLocalStorage();
+        mostrarListaUsuarios();
+        document.getElementById("nombre").value = "";
+        document.getElementById("rol").value = "";
+    });
+ 
+    // Cuando demos clic en agregar usuario, esta función toma el LocalStorage
+    function guardarEnLocalStorage() {
+        let texto = "";
+        for (let i = 0; i < usuariosGuardados.length; i++) {
+            texto += usuariosGuardados[i].nombreUsuario + "," + usuariosGuardados[i].rolUsuario;
+            if (i < usuariosGuardados.length - 1) {
+                texto += ";";
+            }
+        }
+        localStorage.setItem("usuariosGuardados", texto);
+    }
+ 
+    // Se implementa la función del modulo mostrar la lista de usuarios registrados
+    function mostrarListaUsuarios() {
+        listaDeUsuarios.innerHTML = "";
+        for (let i = 0; i < usuariosGuardados.length; i++) {
+            let usuario = usuariosGuardados[i];
+            let li = document.createElement("li");
+            li.innerHTML =
+                usuario.nombreUsuario + " - " + usuario.rolUsuario +
+                "<div>" +
+                "<button onclick='editarUsuario(" + i + ")'>Editar</button>" +
+                "<button onclick='eliminarUsuario(" + i + ")'>Eliminar</button>" +
+                "</div>";
+            listaDeUsuarios.appendChild(li);
+        }
+    }
+ 
+    // Funciones creadas para editar los nombres y roles por si se debe corregir algo
+    window.editarUsuario = function (indice) {
+        let usuario = usuariosGuardados[indice];
+        let nuevoNombreUsuario = prompt("Nuevo nombre:", usuario.nombreUsuario);
+        let nuevoRolUsuario = prompt("Nuevo rol:", usuario.rolUsuario);
+        if (nuevoNombreUsuario && nuevoRolUsuario) {
+            usuariosGuardados[indice].nombreUsuario = nuevoNombreUsuario;
+            usuariosGuardados[indice].rolUsuario = nuevoRolUsuario;
+            guardarEnLocalStorage();
+            mostrarListaUsuarios();
+        }
+    };
+ 
+    // Creamos el boton para eliminar el usuario por si ya no se necesita
+    window.eliminarUsuario = function (indice) {
+        if (confirm("¿Eliminar usuario?")) {
+            usuariosGuardados.splice(indice, 1);
+            guardarEnLocalStorage();
+            mostrarListaUsuarios();
+        }
+    };
+ 
+    // último proceso con el boton para cerrar la sesión del Admin
+    botonCerrarSesion.addEventListener("click", function () {
+        contenedorAplicacion.classList.add("oculto");
+        contenedorLogin.classList.remove("oculto");
+        botonIniciarSesion.disabled = false;
+        cantidadIntentosFallidos = 0;
+        mensajeErrorLogin.textContent = "";
+    });
+ 
+});
