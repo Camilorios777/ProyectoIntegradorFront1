@@ -1,8 +1,102 @@
-
-body {
-    background-color:rgb(129, 192, 87);
-    margin: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-    font-size: 30px ;
+Julioo 
+ 
+* {
+    box-sizing: border-box;
 }
+ 
+body {
+    background: linear-gradient(135deg, #e6f0ea, #cbe3d6);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+ 
+.login-container,
+.app-container {
+    width: 400px;
+    background-color: white;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+ 
+/* Diseño par alos titulos */
+h1, h2 {
+    margin-bottom: 20px;
+    color: #2f5d50;
+}
+ 
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+ 
+ 
+/* Diseño de los botones */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf8e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+ 
+button:hover {
+    background-color: #3d9279;
+}
+ 
+/* Diseñor con la lista que creamos de usuarios */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+ 
+li {
+    background-color: #f4f9f7;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+li button {
+    width: auto;
+    padding: 6px 10px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+ 
+/* El diseño del boton para salir */
+.cerrar {
+    background-color: #e74c3c;
+    margin-top: 20px;
+}
+ 
+.cerrar:hover {
+    background-color: #c0392b;
+}
+ 
+.oculto {
+    display: none;
+}
+ 
+/* Alerta de los mensajes */
+#mensajeLogin {
+    color: red;
+    margin-top: 10px;
+}
+ 
+ 
