@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISTEMA DE NOTAS - Sistema Profesional de Calificaciones</title>
     <link rel="stylesheet" href="style.css">
@@ -208,5 +209,39 @@
     </div>
 
     <script src="app.js"></script>
+=======
+    <title>Sistema de Notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <div class="login-container" id="login">
+        <h1>Sistema de Notas</h1>
+ 
+        <input type="text" id="usuario" placeholder="Usuario">
+        <input type="password" id="password" placeholder="Contraseña">
+ 
+        <button id="botonLogin">Iniciar sesión</button>
+        <p id="mensajeLogin"></p>
+    </div>
+ 
+    <!-- Se realiza la conexión con JS -->
+    <div class="app-container oculto" id="app">
+        <h2>Gestión de Usuarios</h2>
+ 
+        <div class="form">
+            <input type="text" id="nombre" placeholder="Nombre del usuario">
+            <input type="text" id="rol" placeholder="Rol">
+            <button id="botonAgregar">Agregar usuario</button>
+        </div>
+ 
+        <ul id="listaUsuarios"></ul>
+ 
+        <button class="cerrar" id="botonSalir">Cerrar sesión</button>
+    </div>
+ 
+    <script src="app.js"></script>
+ 
+>>>>>>> e0b3c40b4c9b2bd896a06890d4050e0642624de3
 </body>
 </html>
