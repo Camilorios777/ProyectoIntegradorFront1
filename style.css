@@ -1,102 +1,231 @@
-Julioo 
+/* Paleta de colores Limpia, Moderna y Profesional */
+:root {
+    --primary: #1e6091;
+    --primary-hover: #164a71;
+    --secondary: #52b788;
+    --danger: #eb5656;
+    --danger-hover: #c92a3a;
+    --warning: #f39c12;
+    --surface: rgba(255, 255, 255, 0.94);
+    --text-color: #495057;
+    --text-dark: #212529;
+    --radius: 12px;
+    --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
  
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
  
 body {
-    background: linear-gradient(135deg, #e6f0ea, #cbe3d6);
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
 }
  
-.login-container,
-.app-container {
-    width: 400px;
-    background-color: white;
-    margin: 80px auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.logo-container {
     text-align: center;
+    margin-bottom: 15px;
 }
  
-/* Diseño par alos titulos */
-h1, h2 {
-    margin-bottom: 20px;
-    color: #2f5d50;
+.logo-container img {
+    width: 200px; 
+    height: auto;
 }
  
-input {
+ 
+/* EFECTO DE GRADIENTE DINÁMICO FLUIDO EN EL FONDO */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(-45deg, #e8f1f5, #ced4da, #d8f3dc, #b7e4c7);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+}
+ 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+ 
+/* Contenedores Principales estilo Glassmorphism */
+.auth-container, .app-container {
+    background: var(--surface);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
     width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
  
- 
-/* Diseño de los botones */
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #4caf8e;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
-    margin-top: 5px;
+.app-container {
+    max-width: 1000px;
+    margin: 40px 20px;
 }
  
-button:hover {
-    background-color: #3d9279;
-}
+h1 { color: var(--primary); font-weight: 700; margin-bottom: 5px; text-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+h2 { color: var(--text-dark); font-weight: 400; font-size: 1.1rem; margin-bottom: 25px; }
+h3 { color: var(--primary); font-size: 1.15rem; border-left: 4px solid var(--primary); padding-left: 10px; }
  
-/* Diseñor con la lista que creamos de usuarios */
-ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
- 
-li {
-    background-color: #f4f9f7;
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 6px;
+/* Flexbox para cabeceras de tarjetas con filtros */
+.card-header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
 }
  
-li button {
-    width: auto;
-    padding: 6px 10px;
-    font-size: 12px;
-    margin-left: 5px;
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
  
-/* El diseño del boton para salir */
-.cerrar {
-    background-color: #e74c3c;
-    margin-top: 20px;
+.filter-box label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
 }
  
-.cerrar:hover {
-    background-color: #c0392b;
+.filter-box input, .filter-box select {
+    margin-bottom: 0;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    width: 260px;
 }
  
-.oculto {
-    display: none;
+/* Entradas de Datos */
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background-color: #fff;
+    outline: none;
+    transition: all 0.2s ease;
 }
  
-/* Alerta de los mensajes */
-#mensajeLogin {
-    color: red;
-    margin-top: 10px;
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 96, 145, 0.15);
 }
  
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--text-dark);
+}
  
+/* Botones */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+button:hover { background-color: var(--primary-hover); }
+ 
+.btn-cerrar { background-color: #6c757d; width: auto; padding: 8px 18px; font-size: 0.85rem; }
+.btn-cerrar:hover { background-color: #5a6268; }
+.btn-save { background-color: var(--secondary); }
+.btn-save:hover { background-color: #40916c; }
+.btn-cancel { background-color: #e9ecef; color: var(--text-dark); }
+.btn-cancel:hover { background-color: #dee2e6; }
+td .acciones-container {display: flex; align-items: center; gap: 8px; flex-wrap: nowrap;}
+.btn-action {white-space: nowrap;}
+.btn-action { width: auto; padding: 6px 12px; font-size: 0.8rem; margin-right: 4px; display: inline-block; margin-bottom: 2px; }
+.btn-danger { background-color: var(--danger); }
+.btn-danger:hover { background-color: var(--danger-hover); }
+.btn-warning { background-color: var(--warning); }
+.btn-warning:hover { background-color: #e67e22; }
+ 
+.btn-group { display: flex; gap: 12px; margin-top: 15px; }
+ 
+/* Mensajes operacionales */
+.error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 10px; text-align: center; font-weight: 500; }
+.success-msg { color: var(--secondary); font-size: 0.9rem; margin-top: 10px; text-align: center; font-weight: 500; }
+.toggle-text { font-size: 0.9rem; margin-top: 20px; text-align: center; }
+.toggle-text span { color: var(--primary); cursor: pointer; font-weight: 600; }
+.toggle-text span:hover { text-decoration: underline; }
+ 
+/* Encabezado Dashboard */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+ 
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e2eafc;
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+ 
+.sub-badge { font-size: 0.9rem; color: #6c757d; margin-top: 5px; }
+.card { background: #ffffff; border: 1px solid #e9ecef; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+.mt-20 { margin-top: 25px; }
+ 
+/* Tablas Responsivas */
+.table-responsive { width: 100%; overflow-x: auto; margin-top: 10px; border-radius: 8px; border: 1px solid #e9ecef; }
+table { width: 100%; border-collapse: collapse; text-align: left; background: white; }
+th, td { padding: 14px; border-bottom: 1px solid #e9ecef; font-size: 0.9rem; }
+th { background-color: #f8f9fa; color: var(--text-dark); font-weight: 600; }
+tr:hover { background-color: #f8f9fa; }
+ 
+/* Badges de Estado */
+.status-badge { padding: 3px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+.status-badge.activo { background: #d8f3dc; color: #1b4332; }
+.status-badge.pendiente { background: #fde2e4; color: #64121a; }
+ 
+/* Ventanas Modales */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(33, 37, 41, 0.4);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+.modal-content { width: 100%; max-width: 420px; animation: modalEntrada 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+ 
+@keyframes modalEntrada {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+ 
+.oculto { display: none !important; }

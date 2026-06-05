@@ -1,0 +1,14 @@
+{
+  "usuariosIniciales": [
+    { "id": 1, "nombre": "Administrador General", "user": "admin@cesde.com", "pass": "admin123", "rol": "admin", "activo": true },
+    { "id": 2, "nombre": "Profesor Julio Florez", "user": "julio@cesde.com", "pass": "profej123", "rol": "profesor", "materia": "Frontend", "activo": true },
+    { "id": 3, "nombre": "Profesor Camilo Goenaga", "user": "camilo@cesde.com", "pass": "profec123", "rol": "profesor", "materia": "Backend", "activo": true },
+    { "id": 4, "nombre": "Luisa Rodriguez", "user": "luisa@cesde.com", "pass": "luisa123", "rol": "estudiante", "activo": true },
+    { "id": 5, "nombre": "Santiago Salazar", "user": "santiago@cesde.com", "pass": "santiago123", "rol": "estudiante", "activo": true },
+    { "id": 6, "nombre": "Elvi Lado", "user": "elvio@cesde.com", "pass": "elvio123", "rol": "estudiante", "activo": false }
+  ],
+  "notasIniciales": [
+    { "id": 101, "estudianteId": 4, "estudianteNombre": "Luisa Rodriguez", "materia": "Frontend", "actividad": "Taller del DOM", "calificacion": 4.5 },
+    { "id": 102, "estudianteId": 5, "estudianteNombre": "Santiago Salazar", "materia": "Frontend", "actividad": "Taller del DOM", "calificacion": 3.8 }
+  ]
+}

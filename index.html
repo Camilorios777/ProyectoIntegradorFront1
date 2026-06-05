@@ -2,6 +2,214 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE NOTAS - Sistema Profesional de Calificaciones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+
+    <div id="authContainer" class="auth-container">
+
+        <div class="logo-container">
+        <img src="imagenes/logocesde.png" alt="Logo Cesde">
+        </div>
+
+        <div id="loginBox">
+            <h1>SISTEMA DE NOTAS</h1>
+            <h2>Control de Calificaciones</h2>
+            <form id="loginForm">
+                <input type="email" id="loginUser" placeholder="Correo Electrónico" required>
+                <input type="password" id="loginPass" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p id="mensajeLogin" class="error-msg"></p>
+            <p class="toggle-text">¿Eres nuevo? <span id="btnIrARegistro">Regístrate aquí</span></p>
+        </div>
+
+        <div id="registerBox" class="oculto">
+            <h1>SISTEMA DE NOTAS</h1>
+            <h2>Formulario de Registro</h2>
+            <form id="registerForm">
+                <input type="text" id="regNombre" placeholder="Nombre Completo" required>
+                <input type="email" id="regUser" placeholder="Correo Electrónico" required>
+                <input type="password" id="regPass" placeholder="Crea una Contraseña" required>
+                <select id="regRol" required>
+                    <option value="" disabled selected>Selecciona tu Rol</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="profesor">Profesor</option>
+                </select>
+                <input type="text" id="regMateria" placeholder="Materia que dicta (Solo Profesores)" class="oculto">
+                <button type="submit">Solicitar Registro</button>
+            </form>
+            <p id="mensajeRegistro" class="success-msg"></p>
+            <p class="toggle-text">¿Ya tienes cuenta? <span id="btnIrALogin">Inicia Sesión</span></p>
+        </div>
+    </div>
+
+    <div id="dashboardContainer" class="app-container oculto">
+        <header class="main-header">
+            <div>
+                <h1 id="welcomeTitle">Bienvenido</h1>
+                <span id="userBadge" class="badge">Rol</span>
+                <p id="materiaBadge" class="sub-badge oculto"></p>
+            </div>
+            <button id="btnCerrarSesion" class="btn-cerrar">Cerrar Sesión</button>
+        </header>
+
+        <main id="vistaEstudiante" class="role-view oculto">
+            <div class="card">
+                <h3>Mi Historial de Notas y Calificaciones</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asignatura / Materia</th>
+                                <th>Actividad Evaluada</th>
+                                <th>Calificación Obtenida</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaEstudianteNotas"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <main id="vistaProfesor" class="role-view oculto">
+            <div class="card">
+                <h3>Registrar Nueva Nota Académica</h3>
+                <form id="formCrearNota">
+                    <select id="selectEstudianteNota" required>
+                        <option value="" disabled selected>Selecciona un Estudiante...</option>
+                    </select>
+                    <input type="text" id="txtActividad" placeholder="Nombre de la Actividad (Ej: Examen Parcial)" required>
+                    <input type="number" id="numCalificacion" placeholder="Nota (0.0 - 5.0)" step="0.1" min="0" max="5" required>
+                    <button type="submit" class="btn-save">Subir Calificación</button>
+                </form>
+            </div>
+
+            <div class="card mt-20">
+                <h3>Listado de Notas Emitidas</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Estudiante</th>
+                                <th>Actividad</th>
+                                <th>Nota</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaProfesorCRUD"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <main id="vistaAdmin" class="role-view oculto">
+            <div class="card">
+                <div class="card-header-flex">
+                    <h3>Validación y Control de Usuarios</h3>
+                    <div class="filter-box">
+                        <label for="filterUsuarioEstado">Estado de cuenta:</label>
+                        <select id="filterUsuarioEstado">
+                            <option value="todos">Todos los usuarios</option>
+                            <option value="activos">Solo Activos</option>
+                            <option value="pendientes">Solo Pendientes / Bloqueados</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol asignado</th>
+                                <th>Estado</th>
+                                <th>Acciones de Control</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaAdminUsuarios"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-20">
+                <div class="card-header-flex">
+                    <h3>Libro General de Calificaciones</h3>
+                    <div class="filter-box">
+                        <input type="text" id="searchEstudianteNota" placeholder="🔍 Filtrar por nombre de estudiante...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Estudiante</th>
+                                <th>Materia</th>
+                                <th>Actividad</th>
+                                <th>Nota Actual</th>
+                                <th>Acciones Administrativas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaAdminNotas"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <div id="modalEditarNota" class="modal-overlay oculto">
+            <div class="modal-content card">
+                <h3>Modificar Calificación</h3>
+                <input type="hidden" id="editNotaId">
+                <p id="lblEstudianteEditar">Estudiante: </p>
+                <br>
+                <label>Calificación:</label>
+                <input type="number" id="numEditarCalificacion" step="0.1" min="0" max="5" required>
+                <div class="btn-group">
+                    <button id="btnConfirmarEdicion" class="btn-save">Actualizar Nota</button>
+                    <button id="btnCancelarEdicion" class="btn-cancel">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalEditarUsuario" class="modal-overlay oculto">
+            <div class="modal-content card">
+                <h3>Editar Perfil de Usuario</h3>
+                <input type="hidden" id="editUsuarioId">
+                
+                <label>Nombre Completo:</label>
+                <input type="text" id="txtEditUserNombre" required>
+                
+                <label>Correo Electrónico:</label>
+                <input type="email" id="txtEditUserCorreo" required>
+                
+                <label>Rol de Usuario:</label>
+                <select id="selectEditUserRol" required>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="profesor">Profesor</option>
+                </select>
+                
+                <div id="wrapperEditMateria" class="oculto">
+                    <label>Materia Dictada:</label>
+                    <input type="text" id="txtEditUserMateria">
+                </div>
+                
+                <div class="btn-group">
+                    <button id="btnConfirmarEdicionUsuario" class="btn-save">Guardar Cambios</button>
+                    <button id="btnCancelarEdicionUsuario" class="btn-cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+=======
     <title>Sistema de Notas</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -34,5 +242,6 @@
  
     <script src="app.js"></script>
  
+>>>>>>> e0b3c40b4c9b2bd896a06890d4050e0642624de3
 </body>
 </html>
